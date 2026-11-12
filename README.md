@@ -14,8 +14,19 @@ Este sistema elimina la revisión manual dispersa mediante una **arquitectura Se
 
 ## 🏗️ Arquitectura del Sistema
 
-**Flujo de Ejecución:**
-`Open-Meteo API (Extracción JSON)` ➔ `Python ETL Script` ➔ `PostgreSQL / Supabase (Persistencia IPv4)` + `Telegram Bot API (Boletín Ejecutivo)` — *Orquestado cada 12 horas por GitHub Actions.*
+[ Open-Meteo API ] ──(Extracción JSON)──▶ [ Python ETL Script ]
+                                                  │
+                       ┌──────────────────────────┴──────────────────────────┐
+                       ▼                                                     ▼
+        [ PostgreSQL / Supabase ]                             [ Telegram Bot API ]
+      (Persistencia Histórica IPv4)                        (Boletín Ejecutivo en Canal)
+                       ▲                                                     ▲
+                       └──────────────────────────┬──────────────────────────┘
+                                                  │
+                                     [ GitHub Actions (Cron) ]
+                                    (Ejecución 06:00 y 18:00 COT)
+
+---
 
 ### Stack Tecnológico
 * **Lenguaje:** Python 3.11 (`requests`, `psycopg2-binary`, `python-dotenv`)
