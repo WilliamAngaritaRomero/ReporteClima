@@ -1,0 +1,36 @@
+name: Monitor Riesgo Logístico NDS
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 06:00 AM y 06:00 PM hora Colombia (11:00 y 23:00 UTC)
+    - cron: '0 11,23 * * *'
+  workflow_dispatch: # Permite ejecutarlo manualmente con un botón en GitHub
+
+jobs:
+  ejecutar-monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar pipeline de monitoreo
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python monitor_cloud.py
