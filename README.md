@@ -80,4 +80,5 @@ Este sistema elimina la revisión manual dispersa mediante una **arquitectura Se
 
 ---
 
-**Desarrollado por [William Angarita Romero](https://github.com/WilliamAngaritaRomero)** — *Ingeniería de Automatización, Integración de Sistemas y Desarrollo Full-Stack.*
+**Desarrollado por [William Angarita Romero](https://github.com/WilliamAngaritaRomero)** — *Ingeniería de Automatización, Integración de Sistemas y Desarrollo Full-Stack.*  
+*Arquitectura diseñada e implementada con asistencia técnica de **Gemini (Google AI)** para la optimización del pipeline ETL, integración de infraestructura en la nube y documentación.*
