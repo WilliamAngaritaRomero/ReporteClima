@@ -13,7 +13,7 @@ Este sistema elimina la revisión manual dispersa mediante una **arquitectura Se
 ---
 
 ## 🏗️ Arquitectura del Sistema
-
+```text
 [ Open-Meteo API ] ──(Extracción JSON)──▶ [ Python ETL Script ]
                                                   │
                        ┌──────────────────────────┴──────────────────────────┐
@@ -25,6 +25,7 @@ Este sistema elimina la revisión manual dispersa mediante una **arquitectura Se
                                                   │
                                      [ GitHub Actions (Cron) ]
                                     (Ejecución 06:00 y 18:00 COT)
+```
 
 ---
 
