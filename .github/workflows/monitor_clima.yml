@@ -3,7 +3,7 @@ name: Monitor Riesgo Logístico NDS
 on:
   schedule:
     # Se ejecuta todos los días a las 06:00 AM y 06:00 PM hora Colombia (11:00 y 23:00 UTC)
-    - cron: '0 11,23 * * *'
+    - cron: '23 6,18 * * *'
   workflow_dispatch: # Permite ejecutarlo manualmente con un botón en GitHub
 
 jobs:
